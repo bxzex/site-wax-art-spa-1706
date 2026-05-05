@@ -1,0 +1,2067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wax Art Spa</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23c2a378'/><text x='50' y='68' font-size='60' fill='white' text-anchor='middle' font-family='Arial,sans-serif' font-weight='bold'>W</text></svg>">
+    
+    <!-- OG Meta Tags -->
+    <meta property="og:title" content="Wax Art Spa">
+    <meta property="og:description" content="Wax Art Spa is a sanctuary where relaxation meets rejuvenation, offering an exquisite range of spa services designed to pamper you from head to toe.">
+    <meta property="og:image" content="./image-1.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://www.waxartspa.com/">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* CSS Variables - Spa Niche Palette */
+        :root {
+            --primary: #c2a378; /* Soft Gold / Sand */
+            --primary-light: #d8c2a1;
+            --primary-dark: #a88b60;
+            --accent: #415745; /* Deep Sage Green */
+            --bg-base: #f9f8f6; /* Warm Cream */
+            --bg-alt: #f0ece4; /* Slightly darker cream */
+            --text-main: #2d2621; /* Deep Charcoal Brown */
+            --text-muted: #6b635a;
+            --white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --glass-shadow: 0 8px 32px 0 rgba(194, 163, 120, 0.1);
+            --radius-sm: 12px;
+            --radius-md: 24px;
+            --radius-lg: 32px;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Reset & Global */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--text-main);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Typography */
+        .text-center { text-align: center; }
+        .eyebrow {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+        }
+        .section-subtitle {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+        section {
+            padding: clamp(5rem, 10vh, 10rem) 0;
+            position: relative;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 2.5rem;
+            border-radius: 99px;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 10px 20px rgba(194, 163, 120, 0.3);
+        }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 25px rgba(194, 163, 120, 0.4);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--text-main);
+        }
+        .btn-outline:hover {
+            background: var(--text-main);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-base);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+        .preloader-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            color: var(--primary);
+            animation: pulse 1.5s infinite alternate;
+            padding: 0 2rem;
+            text-align: center;
+            word-break: break-word;
+            max-width: 90vw;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.5; transform: scale(0.98); }
+            100% { opacity: 1; transform: scale(1.02); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(249, 248, 246, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            transition: var(--transition);
+        }
+        nav.scrolled {
+            padding: 1rem 5%;
+            background: rgba(249, 248, 246, 0.95);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            white-space: nowrap;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px; left: 0; width: 0; height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+        .nav-links a:hover::after { width: 100%; }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        /* Open/Closed Badge */
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .status-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+        }
+        .status-open .status-dot { background: #22c55e; animation: pulseDot 2s infinite; }
+        .status-open { color: #166534; border: 1px solid #bbf7d0; }
+        .status-closed .status-dot { background: #ef4444; }
+        .status-closed { color: #991b1b; border: 1px solid #fecaca; }
+        @keyframes pulseDot { 0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); } 70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); } 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); } }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(26, 24, 22, 0.98);
+            backdrop-filter: blur(15px);
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        .mobile-menu a {
+            color: var(--white);
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+        }
+        .mobile-menu .close-menu {
+            position: absolute;
+            top: 2rem; right: 2rem;
+            background: none; border: none;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Sticky Sidebar */
+        .sticky-sidebar {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 90;
+        }
+        .sticky-sidebar a {
+            width: 45px; height: 45px;
+            border-radius: 50%;
+            background: var(--white);
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+        .sticky-sidebar a:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: scale(1.1) translateX(-5px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            padding-top: 120px;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at top right, #ffffff 0%, var(--bg-base) 100%);
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .hero-content {
+            z-index: 10;
+        }
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+        }
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.25rem);
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+            opacity: 0;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            opacity: 0;
+        }
+        .hero-image-wrapper {
+            position: relative;
+            height: 75vh;
+            min-height: 500px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: floatImg 6s ease-in-out infinite alternate;
+        }
+        .hero-image-wrapper img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+        @keyframes floatImg { 0% { transform: translateY(0); } 100% { transform: translateY(-15px); } }
+        
+        /* Hero Animations */
+        @keyframes heroReveal {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero h1 { animation: heroReveal 1s ease forwards 0.2s; }
+        .hero p { animation: heroReveal 1s ease forwards 0.4s; }
+        .hero-btns { animation: heroReveal 1s ease forwards 0.6s; }
+        .hero-image-wrapper { animation: heroReveal 1.2s ease forwards 0.3s, floatImg 6s ease-in-out infinite alternate 1.5s; }
+
+        /* Marquee */
+        .marquee-container {
+            background: var(--accent);
+            color: var(--white);
+            padding: 1.5rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+        }
+        .marquee-content {
+            display: inline-flex;
+            gap: 3rem;
+            animation: marquee 25s linear infinite;
+        }
+        .marquee-item {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .marquee-item i { font-size: 0.8rem; color: var(--primary); }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* Scroll Reveal Utility */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        .about-img {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+        .about-img img {
+            width: 100%; height: 600px; object-fit: cover;
+            border-radius: var(--radius-lg);
+        }
+        .about-badge {
+            position: absolute;
+            bottom: -30px; right: -30px;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 50%;
+            width: 180px; height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            animation: spinBadge 15s linear infinite;
+        }
+        .about-badge-inner {
+            animation: spinBadgeReverse 15s linear infinite;
+        }
+        .about-badge h3 { font-size: 2.5rem; color: var(--primary); margin: 0; }
+        .about-badge p { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin: 0; }
+        @keyframes spinBadge { 100% { transform: rotate(360deg); } }
+        @keyframes spinBadgeReverse { 100% { transform: rotate(-360deg); } }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--bg-alt);
+            padding: 5rem 0;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+        .stat-card {
+            padding: 2rem;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--glass-shadow);
+        }
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Why Choose Us */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+        .feature-card {
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            border-color: var(--primary-light);
+        }
+        .feature-icon {
+            width: 80px; height: 80px;
+            background: var(--bg-base);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary);
+            margin: 0 auto 1.5rem;
+            transition: var(--transition);
+        }
+        .feature-card:hover .feature-icon {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Services */
+        .services-section {
+            background: var(--text-main);
+            color: var(--white);
+        }
+        .services-section .section-title, .services-section .eyebrow { color: var(--white); }
+        .services-section .section-subtitle { color: rgba(255,255,255,0.7); }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .service-card {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.08);
+            border-color: var(--primary);
+        }
+        .service-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        .service-img img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        .service-card:hover .service-img img { transform: scale(1.1); }
+        .service-content {
+            padding: 2rem;
+        }
+        .service-content h3 { color: var(--white); margin-bottom: 1rem; font-size: 1.5rem; }
+        .service-content p { color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; font-size: 0.95rem; }
+        .service-link {
+            color: var(--primary);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .service-link:hover { gap: 1rem; }
+
+        /* Pricing Menu */
+        .menu-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 4rem;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+        }
+        .menu-category { margin-bottom: 3rem; }
+        .menu-category h3 {
+            font-size: 2rem;
+            color: var(--accent);
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        .menu-item {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 1.5rem;
+        }
+        .menu-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .menu-dots {
+            flex-grow: 1;
+            border-bottom: 2px dotted #ccc;
+            margin: 0 1rem;
+            position: relative;
+            top: -4px;
+        }
+        .menu-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+        .menu-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: -0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Newsletter */
+        .newsletter-section {
+            background: var(--accent);
+            padding: 6rem 0;
+            text-align: center;
+            color: var(--white);
+        }
+        .newsletter-section h2 { color: var(--white); }
+        .newsletter-form {
+            max-width: 500px;
+            margin: 2rem auto 0;
+            display: flex;
+            gap: 1rem;
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem;
+            border-radius: 99px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .newsletter-form input {
+            flex-grow: 1;
+            background: transparent;
+            border: none;
+            padding: 1rem 1.5rem;
+            color: var(--white);
+            font-size: 1rem;
+            outline: none;
+        }
+        .newsletter-form input::placeholder { color: rgba(255,255,255,0.6); }
+        .newsletter-form button {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 0 2rem;
+            border-radius: 99px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .newsletter-form button:hover { background: var(--white); color: var(--accent); }
+
+        /* Team */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+        .team-card {
+            text-align: center;
+            group: hover;
+        }
+        .team-img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        .team-img img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .team-card:hover .team-img img { transform: scale(1.05); }
+        .team-overlay {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            justify-content: center;
+        }
+        .team-card:hover .team-overlay { opacity: 1; }
+        .team-name { font-size: 1.5rem; margin-bottom: 0.2rem; }
+        .team-role { color: var(--primary); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+
+        /* Social Feed (Fake IG) */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0;
+        }
+        .social-item {
+            aspect-ratio: 1/1;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .social-item img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .social-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            color: var(--white);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .social-item:hover img { transform: scale(1.1); }
+        .social-item:hover .social-overlay { opacity: 1; }
+        .social-stat { display: flex; align-items: center; gap: 0.5rem; font-weight: 600; font-size: 1.2rem; }
+
+        /* Spotlight / Before & After */
+        .spotlight-section {
+            background: var(--bg-alt);
+        }
+        .spotlight-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 4rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+        }
+        .spotlight-img {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            position: relative;
+        }
+        .spotlight-img img { width: 100%; height: 500px; object-fit: cover; }
+        .spotlight-badge {
+            position: absolute;
+            top: 20px; left: 20px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 99px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+        }
+
+        /* Luxury Photo Gallery (Bento Box) */
+        .gallery-section {
+            background: var(--text-main);
+            padding: 8rem 0;
+        }
+        .gallery-section .section-title, .gallery-section .eyebrow { color: var(--white); }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 300px;
+            gap: 1rem;
+            padding: 0 2%;
+        }
+        .bento-item {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            position: relative;
+            background: #000;
+        }
+        .bento-item img {
+            width: 100%; height: 100%; object-fit: cover;
+            opacity: 0.8;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: grayscale(20%);
+        }
+        .bento-item:hover img {
+            transform: scale(1.08);
+            opacity: 1;
+            filter: grayscale(0%);
+        }
+        .bento-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+            opacity: 0;
+            transition: var(--transition);
+            pointer-events: none;
+        }
+        .bento-item:hover .bento-overlay { opacity: 1; }
+        
+        /* Bento Spans to create asymmetric layout using all 19 images */
+        .bento-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+        .bento-item:nth-child(4) { grid-column: span 2; }
+        .bento-item:nth-child(7) { grid-row: span 2; }
+        .bento-item:nth-child(10) { grid-column: span 2; grid-row: span 2; }
+        .bento-item:nth-child(14) { grid-column: span 2; }
+        .bento-item:nth-child(18) { grid-column: span 2; grid-row: span 2; }
+
+        /* Reviews */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        .review-card {
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: var(--radius-md);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            position: relative;
+        }
+        .review-quote-icon {
+            position: absolute;
+            top: 2rem; right: 2rem;
+            font-size: 3rem;
+            color: var(--bg-alt);
+            opacity: 0.5;
+        }
+        .stars { color: gold; margin-bottom: 1rem; font-size: 1.2rem; }
+        .review-text { font-size: 1.05rem; font-style: italic; margin-bottom: 1.5rem; color: var(--text-main); }
+        .review-author { font-weight: 600; font-family: 'Playfair Display', serif; font-size: 1.2rem; }
+
+        /* FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 1rem;
+            border-radius: var(--radius-sm);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            background: var(--white);
+            border: none;
+            width: 100%;
+            text-align: left;
+            color: var(--text-main);
+        }
+        .faq-question i { transition: transform 0.3s; color: var(--primary); }
+        .faq-item.active .faq-question i { transform: rotate(180deg); }
+        .faq-answer {
+            padding: 0 2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--text-muted);
+        }
+        .faq-item.active .faq-answer {
+            padding: 0 2rem 1.5rem;
+            max-height: 300px;
+        }
+
+        /* Map & Hours */
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: stretch;
+        }
+        .map-container {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            height: 100%;
+            min-height: 400px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+        .hours-card {
+            background: var(--accent);
+            color: var(--white);
+            padding: 4rem;
+            border-radius: var(--radius-lg);
+        }
+        .hours-card h3 { color: var(--white); font-size: 2.5rem; margin-bottom: 2rem; }
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 1.1rem;
+        }
+        .hours-list li:last-child { border: none; }
+
+        /* Final CTA Banner */
+        .cta-banner {
+            position: relative;
+            padding: 8rem 5%;
+            text-align: center;
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            background-image: url('./image-16.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .cta-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(45, 38, 33, 0.85);
+            z-index: 1;
+        }
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+        .cta-banner h2 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+        .cta-banner p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-main);
+            color: var(--white);
+            padding: 6rem 5% 2rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .footer-links li { margin-bottom: 0.8rem; }
+        .footer-links a { color: rgba(255,255,255,0.7); }
+        .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+        .contact-info li {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: rgba(255,255,255,0.7);
+        }
+        .contact-info i { color: var(--primary); margin-top: 5px; }
+        .qr-code {
+            width: 120px; height: 120px;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            background: white;
+            padding: 5px;
+        }
+        .social-icons { display: flex; gap: 1rem; }
+        .social-icons a {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--white);
+        }
+        .social-icons a:hover { background: var(--primary); transform: translateY(-3px); }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Floating Chat Widget */
+        .chat-widget {
+            position: fixed;
+            bottom: 30px; right: 30px;
+            z-index: 9990;
+        }
+        .chat-fab {
+            width: 65px; height: 65px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: var(--white);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 10px 25px rgba(194, 163, 120, 0.4);
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            animation: pulseFab 2s infinite;
+        }
+        @keyframes pulseFab { 0% { box-shadow: 0 0 0 0 rgba(194, 163, 120, 0.6); } 70% { box-shadow: 0 0 0 15px rgba(194, 163, 120, 0); } 100% { box-shadow: 0 0 0 0 rgba(194, 163, 120, 0); } }
+        .chat-fab:hover { transform: scale(1.05); }
+        
+        .chat-panel {
+            position: absolute;
+            bottom: 85px; right: 0;
+            width: 360px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-md);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255,255,255,0.5);
+            overflow: hidden;
+            transform: scale(0.8) translateY(20px);
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-panel.active {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+            pointer-events: all;
+        }
+        .chat-header {
+            background: var(--text-main);
+            color: var(--white);
+            padding: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .chat-profile { display: flex; align-items: center; gap: 1rem; }
+        .chat-avatar {
+            width: 45px; height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+        .chat-info h4 { color: var(--white); margin: 0; font-size: 1rem; font-family: 'Inter', sans-serif; }
+        .chat-status { font-size: 0.8rem; color: #4ade80; display: flex; align-items: center; gap: 5px; }
+        .chat-status::before { content: ''; width: 8px; height: 8px; background: #4ade80; border-radius: 50%; animation: pulseDot 2s infinite; }
+        .chat-close { background: none; border: none; color: var(--white); font-size: 1.2rem; cursor: pointer; }
+        
+        .chat-body {
+            height: 350px;
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background: var(--bg-base);
+        }
+        .chat-bubble {
+            max-width: 85%;
+            padding: 1rem;
+            border-radius: 18px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            position: relative;
+        }
+        .bubble-in {
+            background: var(--white);
+            color: var(--text-main);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .bubble-out {
+            background: var(--primary);
+            color: var(--white);
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        .chat-time { font-size: 0.7rem; color: var(--text-muted); margin-top: 5px; text-align: right; }
+        .bubble-in .chat-time { text-align: left; }
+        
+        .chat-quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        .quick-reply-btn {
+            background: var(--white);
+            border: 1px solid var(--primary-light);
+            color: var(--primary-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 99px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .quick-reply-btn:hover { background: var(--primary); color: var(--white); }
+        
+        .chat-input-area {
+            padding: 1rem;
+            background: var(--white);
+            border-top: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            gap: 0.5rem;
+        }
+        .chat-input-area input {
+            flex-grow: 1;
+            border: none;
+            background: var(--bg-base);
+            padding: 0.8rem 1rem;
+            border-radius: 99px;
+            outline: none;
+        }
+        .chat-input-area button {
+            width: 45px; height: 45px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        /* Promo Popup */
+        .promo-popup {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            z-index: 99999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .promo-content {
+            background: var(--white);
+            width: 100%; max-width: 500px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            animation: popupIn 0.5s cubic-bezier(0.4,0,0.2,1);
+        }
+        @keyframes popupIn { from { transform: scale(0.9) translateY(20px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
+        .promo-img { height: 200px; width: 100%; object-fit: cover; }
+        .promo-body { padding: 3rem 2rem; }
+        .promo-close {
+            position: absolute; top: 15px; right: 15px;
+            background: rgba(0,0,0,0.5); color: white;
+            border: none; width: 35px; height: 35px; border-radius: 50%;
+            cursor: pointer; font-size: 1.2rem;
+        }
+        .promo-body h3 { font-size: 2rem; color: var(--primary); margin-bottom: 1rem; }
+        .promo-body p { margin-bottom: 2rem; color: var(--text-muted); }
+
+        /* Sticky Mobile CTA */
+        .mobile-sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0; left: 0; width: 100%;
+            background: var(--text-main);
+            padding: 1rem;
+            z-index: 9998;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+        }
+        .mobile-sticky-cta a {
+            display: block;
+            width: 100%;
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 1.2rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* MANDATORY MOBILE OVERRIDES */
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { overflow-x: hidden !important; width: 100%; margin: 0; padding: 0; }
+        img, video, iframe { max-width: 100%; height: auto; }
+        a { color: inherit; text-decoration: none; }
+        
+        /* DESKTOP NAV DEFAULTS */
+        nav, header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999 !important; display: flex !important; justify-content: space-between !important; align-items: center !important; padding: 1rem 5% !important; background: rgba(249, 248, 246, 0.9) !important; backdrop-filter: blur(20px) !important; box-sizing: border-box !important; }
+        body { padding-top: 0 !important; } /* Adjusted for hero */
+        .hamburger, .menu-toggle, .mobile-menu-btn { display: none !important; }
+        .sidebar, .side-bar, .sticky-sidebar { display: flex; }
+        section, .section { padding: clamp(4rem, 8vh, 8rem) 5% !important; width: 100% !important; box-sizing: border-box !important; overflow: hidden; }
+        h1, h2, h3 { overflow-wrap: break-word; word-break: break-word; max-width: 100%; }
+
+        /* MOBILE OVERRIDES */
+        @media (max-width: 768px) {
+            nav, header { padding: 15px !important; background: rgba(249, 248, 246, 0.98) !important; border-bottom: 1px solid rgba(0,0,0,0.05); }
+            nav .logo, nav .brand, header .logo { font-size: 1.3rem !important; max-width: 50vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-right: auto; }
+            nav .nav-links, nav .desktop-nav, nav ul, .nav-actions .btn { display: none !important; }
+            .hamburger, .menu-toggle, .mobile-menu-btn { display: flex !important; align-items: center; justify-content: center; font-size: 24px; color: var(--text-main); background: none; border: none; cursor: pointer; z-index: 101; margin-left: 15px; }
+            
+            .hero { min-height: auto !important; padding-top: 130px !important; justify-content: flex-start !important; gap: 2rem !important; }
+            .hero h1, .hero-title { font-size: clamp(2.5rem, 8vw, 3.5rem) !important; margin-bottom: 1rem !important; }
+            .hero p, .hero-subtitle { font-size: 1rem !important; margin-bottom: 1.5rem !important; }
+            .hero-image-wrapper { height: 400px; min-height: auto; }
+            
+            [class*="grid"], [class*="row"], .about-grid, .services-grid, .team-grid, .gallery-grid, .bento-grid, .footer-grid, .footer-columns, .hero-grid, .location-grid { grid-template-columns: 1fr !important; display: flex !important; flex-direction: column !important; }
+            [class*="grid"] > *, .bento-grid > *, .gallery-grid > * { grid-column: span 1 !important; grid-row: span 1 !important; width: 100% !important; }
+            
+            .bento-grid { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; grid-auto-rows: 200px !important; }
+            .bento-item:nth-child(n) { grid-column: span 1 !important; grid-row: span 1 !important; }
+            
+            footer { padding: 4rem 1rem 8rem !important; }
+            .hero-btns, .hero-cta, .hero .btn-group, .hero-actions { display: flex !important; flex-direction: column !important; align-items: center; width: 100%; padding: 0; }
+            .hero-btns a, .hero-btns button, .hero .btn-group a { width: 100% !important; max-width: 100%; text-align: center; box-sizing: border-box; margin: 0 0 15px 0 !important; }
+            
+            .mobile-sticky-cta { display: block !important; }
+            [class*="chat-widget"], [class*="floating-chat"], #chat-widget { bottom: 90px !important; right: 15px !important; }
+            .chat-panel { width: calc(100vw - 30px); right: -15px; }
+            .sidebar, .side-bar, .sticky-sidebar { display: none !important; }
+            .cursor-dot, .cursor-outline { display: none !important; }
+            
+            .about-badge { display: none; }
+            .menu-container { padding: 2rem; }
+            .spotlight-wrapper { padding: 2rem; }
+            .hours-card { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-text">Wax Art Spa</div>
+    </div>
+
+    <!-- Mobile Menu (Directly in body) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-menu" id="closeMenuBtn"><i class="fas fa-times"></i></button>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <a href="http://www.waxartspa.com/" target="_blank" style="color: var(--primary); margin-top: 2rem;">Book Now</a>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">
+            Wax Art Spa
+        </a>
+        <div class="nav-links">
+            <a href="#about">Our Story</a>
+            <a href="#services">Treatments</a>
+            <a href="#menu">Menu</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#reviews">Testimonials</a>
+        </div>
+        <div class="nav-actions">
+            <div class="status-badge" id="openStatusBadge">
+                <div class="status-dot"></div>
+                <span id="openStatusText">Checking...</span>
+            </div>
+            <a href="http://www.waxartspa.com/" class="btn btn-primary" target="_blank">Book Appointment</a>
+            <button class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Sticky Sidebar -->
+    <div class="sticky-sidebar">
+        <a href="tel:3052421114" title="Call Us"><i class="fas fa-phone"></i></a>
+        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <span class="eyebrow">Wax Art Spa • Homestead</span>
+                <h1>Unveil Your Natural Radiance.</h1>
+                <p>Experience holistic rejuvenation and expert waxing in a sanctuary designed for your ultimate relaxation. Step into Oasis Plaza and leave feeling revitalized.</p>
+                <div class="hero-btns">
+                    <a href="http://www.waxartspa.com/" class="btn btn-primary" target="_blank">Book Your Escape</a>
+                    <a href="tel:3052421114" class="btn btn-outline"><i class="fas fa-phone"></i> (305) 242-1114</a>
+                </div>
+            </div>
+            <div class="hero-image-wrapper">
+                <img src="./image-1.jpg" alt="Wax Art Spa Interior">
+            </div>
+        </div>
+    </section>
+
+    <!-- Scrolling Marquee -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <div class="marquee-item">Expert Waxing <i class="fas fa-star"></i></div>
+            <div class="marquee-item">Holistic Facials <i class="fas fa-star"></i></div>
+            <div class="marquee-item">Deep Tissue Massage <i class="fas fa-star"></i></div>
+            <div class="marquee-item">Ultimate Relaxation <i class="fas fa-star"></i></div>
+            <div class="marquee-item">Sanctuary of Peace <i class="fas fa-star"></i></div>
+            <div class="marquee-item">Expert Waxing <i class="fas fa-star"></i></div>
+            <div class="marquee-item">Holistic Facials <i class="fas fa-star"></i></div>
+            <div class="marquee-item">Deep Tissue Massage <i class="fas fa-star"></i></div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <div class="about-grid">
+            <div class="about-img reveal">
+                <img src="./image-2.jpg" alt="Relaxing Spa Environment">
+                <div class="about-badge">
+                    <div class="about-badge-inner">
+                        <h3>10+</h3>
+                        <p>Years of<br>Excellence</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-content reveal">
+                <span class="eyebrow">Our Philosophy</span>
+                <h2 class="section-title">A Sanctuary for Body and Soul.</h2>
+                <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1.5rem;">Located in the heart of Homestead's Oasis Plaza, Wax Art Spa is more than just a destination—it's a holistic retreat. We believe that true beauty radiates from a place of deep inner peace and physical well-being.</p>
+                <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2.5rem;">Our skilled therapists are dedicated to creating a personalized experience for every guest. Whether you are seeking a flawless wax, a rejuvenating facial, or a tension-melting massage, we harmonize your body and soul in a calming, luxurious environment.</p>
+                <a href="#services" class="btn btn-outline">Explore Treatments</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Counter -->
+    <section class="stats-section">
+        <div class="container stats-grid">
+            <div class="stat-card reveal">
+                <i class="fas fa-star stat-icon"></i>
+                <div class="stat-number"><span class="count" data-target="4">0</span>.3</div>
+                <div class="stat-label">Average Rating</div>
+            </div>
+            <div class="stat-card reveal" style="transition-delay: 0.1s;">
+                <i class="fas fa-comment-dots stat-icon"></i>
+                <div class="stat-number"><span class="count" data-target="232">0</span>+</div>
+                <div class="stat-label">5-Star Reviews</div>
+            </div>
+            <div class="stat-card reveal" style="transition-delay: 0.2s;">
+                <i class="fas fa-spa stat-icon"></i>
+                <div class="stat-number"><span class="count" data-target="15">0</span>+</div>
+                <div class="stat-label">Premium Services</div>
+            </div>
+            <div class="stat-card reveal" style="transition-delay: 0.3s;">
+                <i class="fas fa-heart stat-icon"></i>
+                <div class="stat-number"><span class="count" data-target="5000">0</span>+</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="container">
+        <div class="text-center reveal">
+            <span class="eyebrow">The Wax Art Difference</span>
+            <h2 class="section-title">Elevating Your Spa Experience</h2>
+            <p class="section-subtitle">We blend expert technique with a tranquil atmosphere to deliver unparalleled results and ultimate relaxation.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card reveal">
+                <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+                <h3>Holistic Approach</h3>
+                <p style="color: var(--text-muted); margin-top: 1rem;">Treatments designed to harmonize your physical appearance with your inner well-being.</p>
+            </div>
+            <div class="feature-card reveal" style="transition-delay: 0.1s;">
+                <div class="feature-icon"><i class="fas fa-gem"></i></div>
+                <h3>Premium Products</h3>
+                <p style="color: var(--text-muted); margin-top: 1rem;">We use only the highest quality, skin-safe waxes and skincare lines for optimal results.</p>
+            </div>
+            <div class="feature-card reveal" style="transition-delay: 0.2s;">
+                <div class="feature-icon"><i class="fas fa-user-md"></i></div>
+                <h3>Skilled Therapists</h3>
+                <p style="color: var(--text-muted); margin-top: 1rem;">Our licensed professionals are masters of their craft, ensuring a comfortable and precise service.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="eyebrow">Our Expertise</span>
+                <h2 class="section-title">Curated Treatments</h2>
+                <p class="section-subtitle">Discover our signature services tailored to refresh and revitalize you from head to toe.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-img"><img src="./image-3.jpg" alt="Expert Waxing"></div>
+                    <div class="service-content">
+                        <h3>Precision Waxing</h3>
+                        <p>Experience smooth, flawless skin with our gentle and efficient waxing techniques. From brows to full body, we ensure maximum comfort.</p>
+                        <a href="http://www.waxartspa.com/" class="service-link" target="_blank">Book Service <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card reveal" style="transition-delay: 0.1s;">
+                    <div class="service-img"><img src="./image-4.jpg" alt="Rejuvenating Facials"></div>
+                    <div class="service-content">
+                        <h3>Rejuvenating Facials</h3>
+                        <p>Restore your natural glow with customized facials that cleanse, exfoliate, and hydrate, tailored specifically to your skin type.</p>
+                        <a href="http://www.waxartspa.com/" class="service-link" target="_blank">Book Service <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card reveal" style="transition-delay: 0.2s;">
+                    <div class="service-img"><img src="./image-5.jpg" alt="Massage Therapy"></div>
+                    <div class="service-content">
+                        <h3>Massage Therapy</h3>
+                        <p>Melt away stress and muscle tension with our therapeutic massages, designed to promote deep relaxation and holistic healing.</p>
+                        <a href="http://www.waxartspa.com/" class="service-link" target="_blank">Book Service <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Menu -->
+    <section id="menu" class="container">
+        <div class="text-center reveal">
+            <span class="eyebrow">Investment in Yourself</span>
+            <h2 class="section-title">Service Menu</h2>
+        </div>
+        <div class="menu-container reveal">
+            <div class="menu-category">
+                <h3>Waxing Services</h3>
+                <div class="menu-item">
+                    <span class="menu-name">Brazilian Wax</span>
+                    <span class="menu-dots"></span>
+                    <span class="menu-price">$55</span>
+                </div>
+                <p class="menu-desc">Complete hair removal using premium hard wax for sensitive skin.</p>
+                
+                <div class="menu-item">
+                    <span class="menu-name">Eyebrow Shaping</span>
+                    <span class="menu-dots"></span>
+                    <span class="menu-price">$20</span>
+                </div>
+                <p class="menu-desc">Precision mapping, waxing, and tweezing for the perfect arch.</p>
+                
+                <div class="menu-item">
+                    <span class="menu-name">Full Legs</span>
+                    <span class="menu-dots"></span>
+                    <span class="menu-price">$65</span>
+                </div>
+                <p class="menu-desc">Silky smooth results from thighs to ankles.</p>
+            </div>
+
+            <div class="menu-category">
+                <h3>Facial & Massage</h3>
+                <div class="menu-item">
+                    <span class="menu-name">Signature Glow Facial</span>
+                    <span class="menu-dots"></span>
+                    <span class="menu-price">$95</span>
+                </div>
+                <p class="menu-desc">60-minute customized treatment including extractions and hydro-jelly mask.</p>
+                
+                <div class="menu-item">
+                    <span class="menu-name">Deep Tissue Massage (60 Min)</span>
+                    <span class="menu-dots"></span>
+                    <span class="menu-price">$110</span>
+                </div>
+                <p class="menu-desc">Targeted pressure to relieve chronic muscle tension and knots.</p>
+            </div>
+            
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="http://www.waxartspa.com/" class="btn btn-primary" target="_blank">View Full Menu & Book</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section reveal">
+        <div class="container">
+            <h2>Join Our VIP List</h2>
+            <p style="margin-top: 1rem; font-size: 1.1rem; opacity: 0.9;">Subscribe to receive exclusive offers, skincare tips, and priority booking access.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- The Team -->
+    <section class="container">
+        <div class="text-center reveal">
+            <span class="eyebrow">The Experts</span>
+            <h2 class="section-title">Meet Your Therapists</h2>
+            <p class="section-subtitle">Our dedicated professionals are passionate about delivering exceptional care and making you feel completely comfortable.</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card reveal">
+                <div class="team-img">
+                    <img src="./image-6.jpg" alt="Jenny - Master Esthetician">
+                    <div class="team-overlay">
+                        <a href="tel:3052421114" class="btn btn-primary" style="padding: 0.8rem 1.5rem; font-size: 0.9rem;">Book Jenny</a>
+                    </div>
+                </div>
+                <h3 class="team-name">Jenny</h3>
+                <div class="team-role">Master Esthetician</div>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Known for being quick, fast, and polite. Jenny makes every waxing experience a breeze with great conversation.</p>
+            </div>
+            <div class="team-card reveal" style="transition-delay: 0.1s;">
+                <div class="team-img">
+                    <img src="./image-7.jpg" alt="Sarah - Massage Therapist">
+                    <div class="team-overlay">
+                        <a href="tel:3052421114" class="btn btn-primary" style="padding: 0.8rem 1.5rem; font-size: 0.9rem;">Book Sarah</a>
+                    </div>
+                </div>
+                <h3 class="team-name">Sarah</h3>
+                <div class="team-role">Lead Massage Therapist</div>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Specializes in deep tissue and holistic healing, melting away years of tension in a single session.</p>
+            </div>
+            <div class="team-card reveal" style="transition-delay: 0.2s;">
+                <div class="team-img">
+                    <img src="./image-8.jpg" alt="Maria - Skin Specialist">
+                    <div class="team-overlay">
+                        <a href="tel:3052421114" class="btn btn-primary" style="padding: 0.8rem 1.5rem; font-size: 0.9rem;">Book Maria</a>
+                    </div>
+                </div>
+                <h3 class="team-name">Maria</h3>
+                <div class="team-role">Skin Specialist</div>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Passionate about helping clients achieve their natural radiance through customized facial treatments.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Feed -->
+    <section style="padding: 0;">
+        <div class="text-center reveal" style="padding: 5rem 0 2rem;">
+            <span class="eyebrow">On The Gram</span>
+            <h2 class="section-title" style="font-size: 2.5rem;">Follow Our Journey</h2>
+        </div>
+        <div class="social-grid">
+            <div class="social-item"><img src="./image-9.jpg" alt="Social Post"><div class="social-overlay"><div class="social-stat"><i class="fas fa-heart"></i> 124</div></div></div>
+            <div class="social-item"><img src="./image-10.jpg" alt="Social Post"><div class="social-overlay"><div class="social-stat"><i class="fas fa-heart"></i> 89</div></div></div>
+            <div class="social-item"><img src="./image-11.jpg" alt="Social Post"><div class="social-overlay"><div class="social-stat"><i class="fas fa-heart"></i> 210</div></div></div>
+            <div class="social-item"><img src="./image-12.jpg" alt="Social Post"><div class="social-overlay"><div class="social-stat"><i class="fas fa-heart"></i> 156</div></div></div>
+            <div class="social-item"><img src="./image-13.jpg" alt="Social Post"><div class="social-overlay"><div class="social-stat"><i class="fas fa-heart"></i> 302</div></div></div>
+            <div class="social-item"><img src="./image-14.jpg" alt="Social Post"><div class="social-overlay"><div class="social-stat"><i class="fas fa-heart"></i> 178</div></div></div>
+        </div>
+    </section>
+
+    <!-- Spotlight -->
+    <section class="spotlight-section">
+        <div class="container">
+            <div class="spotlight-wrapper reveal">
+                <div class="spotlight-content">
+                    <span class="eyebrow">Client Spotlight</span>
+                    <h2 class="section-title" style="font-size: 2.5rem;">Transformative Results</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem;">"I Love Everything About Them Made Me Feel So Comfortable The Work Is 10/10 Very Good."</p>
+                    <p style="font-weight: 600; font-family: 'Playfair Display', serif; font-size: 1.2rem;">- Jeromesha R.</p>
+                    <div style="margin-top: 2rem;">
+                        <a href="http://www.waxartspa.com/" class="btn btn-primary" target="_blank">Experience It Yourself</a>
+                    </div>
+                </div>
+                <div class="spotlight-img">
+                    <div class="spotlight-badge">Featured Work</div>
+                    <img src="./image-15.jpg" alt="Spa Transformation">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Luxury Photo Gallery (Bento Box) -->
+    <section id="gallery" class="gallery-section">
+        <div class="text-center reveal">
+            <span class="eyebrow">Visual Tour</span>
+            <h2 class="section-title">The Wax Art Aesthetic</h2>
+            <p class="section-subtitle">Take a glimpse inside our sanctuary of relaxation.</p>
+        </div>
+        <div class="bento-grid">
+            <!-- Using all 19 images to fill the grid -->
+            <div class="bento-item reveal"><img src="./image-1.jpg" alt="Gallery Image 1"><div class="bento-overlay"></div></div>
+            <div class="bento-item reveal"><img src="./image-2.jpg" alt="Gallery Image 2"><div class="bento-overlay"></div></div>
+            <div class="bento-item reveal"><img src="./image-3.jpg" alt="Gallery Image 3"><div class="bento-overlay"></div></div>
+            <div class="bento-item reveal"><img src="./image-4.jpg" alt="Gallery Image 4"><div class="bento-overlay"></div></div>
+            <div class="bento-item reveal"><img src="./image-5.jpg" alt="Gallery Image 5"><div class="bento-overlay"></div></div>
+            <div class="bento-item reveal"><img src="./image-6.jpg" alt="Gallery Image 6"><div class="bento-overlay"></div></div>
+            <div class="bento-item reveal"><img src="./image-7.jpg" alt="Gallery Image 7"><div class="bento-overlay"></div></div>
+            <div class="bento-item reveal"><img src="./image-8.jpg" alt="Gallery Image 8"><div class="bento-overlay"></div></div>
+            <div class="bento-item reveal"><img src="./image-9.jpg" alt="Gallery Image 9"><div class="bento-overlay"></div></div>
+            <div class="bento-item reveal"><img src="./image-10.jpg" alt="Gallery Image 10"><div class="bento-overlay"></div></div>
+            <div class="bento-item reveal"><img src="./image-11.jpg" alt="Gallery Image 11"><div class="bento-overlay"></div></div>
+            <div class="bento-item reveal"><img src="./image-12.jpg" alt="Gallery Image 12"><div class="bento-overlay"></div></div>
+            <div class="bento-item reveal"><img src="./image-13.jpg" alt="Gallery Image 13"><div class="bento-overlay"></div></div>
+            <div class="bento-item reveal"><img src="./image-14.jpg" alt="Gallery Image 14"><div class="bento-overlay"></div></div>
+            <div class="bento-item reveal"><img src="./image-15.jpg" alt="Gallery Image 15"><div class="bento-overlay"></div></div>
+            <div class="bento-item reveal"><img src="./image-16.jpg" alt="Gallery Image 16"><div class="bento-overlay"></div></div>
+            <div class="bento-item reveal"><img src="./image-17.jpg" alt="Gallery Image 17"><div class="bento-overlay"></div></div>
+            <div class="bento-item reveal"><img src="./image-18.jpg" alt="Gallery Image 18"><div class="bento-overlay"></div></div>
+            <div class="bento-item reveal"><img src="./image-19.jpg" alt="Gallery Image 19"><div class="bento-overlay"></div></div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews" class="container">
+        <div class="text-center reveal">
+            <span class="eyebrow">Client Love</span>
+            <h2 class="section-title">Words from Our Guests</h2>
+            <p class="section-subtitle">Rated 4.3 out of 5 stars by over 230 satisfied clients.</p>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card reveal">
+                <i class="fas fa-quote-right review-quote-icon"></i>
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="review-text">"Very clean and professional. I go here often for my wax and massage. I just wish they had more walk in opportunities. They work mostly off of appointments... But other than that there great."</p>
+                <div class="review-author">Local Guide</div>
+            </div>
+            <div class="review-card reveal" style="transition-delay: 0.1s;">
+                <i class="fas fa-quote-right review-quote-icon"></i>
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="review-text">"They were super friendly and professional. Hadn't gotten waxed in over 10 years but the experience was great and prices are good too."</p>
+                <div class="review-author">Happy Client</div>
+            </div>
+            <div class="review-card reveal" style="transition-delay: 0.2s;">
+                <i class="fas fa-quote-right review-quote-icon"></i>
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="review-text">"Jenny was quick & fast & polite. . Great conversation to ease thru the pain lol ."</p>
+                <div class="review-author">Joycelyn A.</div>
+            </div>
+            <div class="review-card reveal" style="transition-delay: 0.3s;">
+                <i class="fas fa-quote-right review-quote-icon"></i>
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="review-text">"The staff & services are always great here! Amazing job !!!!"</p>
+                <div class="review-author">Candace R. & Vanessa C.</div>
+            </div>
+        </div>
+        <div class="text-center reveal">
+            <a href="https://www.google.com/maps/search/Wax%20Art%20Spa%202862%20NE%208th%20St%2C%20Homestead%2C%20FL%2033033%2C%20USA" target="_blank" class="btn btn-outline" style="border-color: var(--primary); color: var(--primary);">
+                <i class="fab fa-google"></i> Leave a Review on Google
+            </a>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="container" style="padding-top: 0;">
+        <div class="text-center reveal">
+            <h2 class="section-title" style="font-size: 2.5rem;">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-container reveal">
+            <div class="faq-item">
+                <button class="faq-question">Do I need an appointment or do you take walk-ins? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-answer"><p>We highly recommend booking an appointment to guarantee your spot, as we work mostly off of appointments to ensure personalized care. We do accept walk-ins when availability permits, but you may be asked to schedule for a later time.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">What type of wax do you use? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-answer"><p>We use premium, hypoallergenic hard and soft waxes depending on the area being treated and your skin's sensitivity. Our products are designed to minimize discomfort and leave your skin perfectly smooth.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">How should I prepare for my waxing appointment? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-answer"><p>Please ensure your hair is at least 1/4 inch long (about the size of a grain of rice). Gently exfoliate the area 24 hours before your appointment, and avoid applying lotions or oils on the day of your service.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Where are you located? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-answer"><p>We are conveniently located in Oasis Plaza at 2862 NE 8th St, Homestead, FL 33033. There is ample parking available for our guests.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map & Hours -->
+    <section class="container">
+        <div class="location-grid">
+            <div class="map-container reveal">
+                <iframe src="https://maps.google.com/maps?q=2862%20NE%208th%20St%2C%20Homestead%2C%20FL%2033033%2C%20USA&t=&z=15&ie=UTF8&iwloc=&output=embed" style="border:0;width:100%;height:100%;filter: grayscale(80%) contrast(1.2) sepia(20%) hue-rotate(10deg);" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="hours-card reveal">
+                <h3>Visit Us</h3>
+                <p style="margin-bottom: 2rem; font-size: 1.1rem;"><i class="fas fa-map-marker-alt" style="color: var(--primary); margin-right: 10px;"></i> 2862 NE 8th St, Homestead, FL 33033<br>(Oasis Plaza)</p>
+                <ul class="hours-list">
+                    <li><span>Monday</span> <span>10:00 AM – 8:00 PM</span></li>
+                    <li><span>Tuesday</span> <span>10:00 AM – 8:00 PM</span></li>
+                    <li><span>Wednesday</span> <span>10:00 AM – 8:00 PM</span></li>
+                    <li><span>Thursday</span> <span>10:00 AM – 8:00 PM</span></li>
+                    <li><span>Friday</span> <span>10:00 AM – 8:00 PM</span></li>
+                    <li><span>Saturday</span> <span>10:00 AM – 7:00 PM</span></li>
+                    <li><span>Sunday</span> <span>11:00 AM – 5:00 PM</span></li>
+                </ul>
+                <div style="margin-top: 2rem;">
+                    <a href="tel:3052421114" class="btn btn-primary" style="width: 100%;"><i class="fas fa-phone"></i> Call (305) 242-1114</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Banner -->
+    <section class="cta-banner">
+        <div class="cta-overlay"></div>
+        <div class="cta-content reveal">
+            <h2>Ready to Glow?</h2>
+            <p>Step into our sanctuary and let our experts pamper you. Secure your appointment today and experience the ultimate in relaxation and beauty.</p>
+            <a href="http://www.waxartspa.com/" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.2rem 3rem;" target="_blank">Book Your Appointment Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="footer-logo">Wax Art Spa</a>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem; max-width: 300px;">A sanctuary where relaxation meets rejuvenation. Harmonizing your body and soul through holistic treatments.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">Our Story</a></li>
+                        <li><a href="#services">Treatments</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> <span>2862 NE 8th St,<br>Homestead, FL 33033</span></li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:3052421114">(305) 242-1114</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@waxartspa.com">info@waxartspa.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect Instantly</h4>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.waxartspa.com/" alt="Scan to Connect" class="qr-code">
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2024 Wax Art Spa. Built by SiteFlow
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <button class="chat-fab" id="chatFab">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+        <div class="chat-panel" id="chatPanel">
+            <div class="chat-header">
+                <div class="chat-profile">
+                    <img src="./image-1.jpg" alt="Support" class="chat-avatar">
+                    <div class="chat-info">
+                        <h4>Spa Concierge</h4>
+                        <div class="chat-status">Online</div>
+                    </div>
+                </div>
+                <button class="chat-close" id="chatClose"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-body" id="chatBody">
+                <div class="chat-bubble bubble-in">
+                    Hi there! Welcome to Wax Art Spa. How can we help you relax today?
+                    <div class="chat-time">Just now</div>
+                </div>
+                <div class="chat-quick-replies" id="quickReplies">
+                    <button class="quick-reply-btn" data-reply="Hours?">Hours?</button>
+                    <button class="quick-reply-btn" data-reply="Location?">Location?</button>
+                    <button class="quick-reply-btn" data-reply="Services?">Services?</button>
+                    <button class="quick-reply-btn" data-reply="WhatsApp Us">WhatsApp Us</button>
+                    <button class="quick-reply-btn" data-reply="Leave a Review">Leave a Review</button>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" placeholder="Type a message..." id="chatInput">
+                <button id="chatSend"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="mobile-sticky-cta">
+        <a href="http://www.waxartspa.com/" target="_blank">Book Appointment</a>
+    </div>
+
+    <!-- Promo Popup -->
+    <div class="promo-popup" id="promoPopup">
+        <div class="promo-content">
+            <button class="promo-close" id="promoClose"><i class="fas fa-times"></i></button>
+            <img src="./image-2.jpg" alt="Promo" class="promo-img">
+            <div class="promo-body">
+                <h3>Welcome to Wellness</h3>
+                <p>Book your first appointment online today and experience the ultimate relaxation at Wax Art Spa.</p>
+                <a href="http://www.waxartspa.com/" class="btn btn-primary" style="width: 100%;" target="_blank">Claim Offer & Book</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // CRITICAL JS SAFETY WRAPPER
+        try {
+            // Preloader
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    const preloader = document.getElementById('preloader');
+                    preloader.style.opacity = '0';
+                    setTimeout(() => preloader.remove(), 500);
+                }, 1000);
+            });
+
+            // Navbar Scroll Effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Mobile Menu Toggle
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const closeMenuBtn = document.getElementById('closeMenuBtn');
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+
+            hamburgerBtn.addEventListener('click', () => mobileMenu.classList.add('active'));
+            closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('active'));
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.remove('active'));
+            });
+
+            // Scroll Reveal (Intersection Observer)
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+            
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // Animated Stats Counter
+            const countElements = document.querySelectorAll('.count');
+            let hasCounted = false;
+            
+            const statsObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && !hasCounted) {
+                    hasCounted = true;
+                    countElements.forEach(el => {
+                        const target = parseInt(el.getAttribute('data-target'));
+                        const duration = 2000;
+                        const step = target / (duration / 16);
+                        let current = 0;
+                        
+                        const updateCount = () => {
+                            current += step;
+                            if (current < target) {
+                                el.innerText = Math.ceil(current);
+                                requestAnimationFrame(updateCount);
+                            } else {
+                                el.innerText = target;
+                            }
+                        };
+                        updateCount();
+                    });
+                }
+            }, { threshold: 0.5 });
+            
+            const statsSection = document.querySelector('.stats-section');
+            if(statsSection) statsObserver.observe(statsSection);
+
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const btn = item.querySelector('.faq-question');
+                btn.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    faqItems.forEach(i => i.classList.remove('active'));
+                    if (!isActive) item.classList.add('active');
+                });
+            });
+
+            // Live Open/Closed Badge
+            const updateStatus = () => {
+                const badge = document.getElementById('openStatusBadge');
+                const text = document.getElementById('openStatusText');
+                const now = new Date();
+                // Convert to EST (Homestead, FL)
+                const estTime = new Date(now.toLocaleString("en-US", {timeZone: "America/New_York"}));
+                const day = estTime.getDay(); // 0=Sun, 1=Mon...
+                const hour = estTime.getHours();
+                const min = estTime.getMinutes();
+                const timeFloat = hour + (min / 60);
+
+                let isOpen = false;
+                
+                // Hours logic
+                if (day >= 1 && day <= 5) { // Mon-Fri: 10am - 8pm
+                    if (timeFloat >= 10 && timeFloat < 20) isOpen = true;
+                } else if (day === 6) { // Sat: 10am - 7pm
+                    if (timeFloat >= 10 && timeFloat < 19) isOpen = true;
+                } else if (day === 0) { // Sun: 11am - 5pm
+                    if (timeFloat >= 11 && timeFloat < 17) isOpen = true;
+                }
+
+                if (isOpen) {
+                    badge.className = 'status-badge status-open';
+                    text.innerText = 'OPEN NOW';
+                } else {
+                    badge.className = 'status-badge status-closed';
+                    text.innerText = 'CLOSED';
+                }
+            };
+            updateStatus();
+            setInterval(updateStatus, 60000); // Update every minute
+
+            // Floating Chat Widget Logic
+            const chatFab = document.getElementById('chatFab');
+            const chatPanel = document.getElementById('chatPanel');
+            const chatClose = document.getElementById('chatClose');
+            const chatBody = document.getElementById('chatBody');
+            const quickReplies = document.querySelectorAll('.quick-reply-btn');
+            const chatInput = document.getElementById('chatInput');
+            const chatSend = document.getElementById('chatSend');
+
+            const toggleChat = () => {
+                chatPanel.classList.toggle('active');
+                if (chatPanel.classList.contains('active')) {
+                    chatFab.innerHTML = '<i class="fas fa-times"></i>';
+                } else {
+                    chatFab.innerHTML = '<i class="fas fa-comment-dots"></i>';
+                }
+            };
+
+            chatFab.addEventListener('click', toggleChat);
+            chatClose.addEventListener('click', toggleChat);
+
+            const appendMessage = (text, type, isHtml = false) => {
+                const msgDiv = document.createElement('div');
+                msgDiv.className = `chat-bubble bubble-${type}`;
+                if(isHtml) {
+                    msgDiv.innerHTML = text + '<div class="chat-time">Just now</div>';
+                } else {
+                    msgDiv.innerHTML = text + '<div class="chat-time">Just now</div>';
+                }
+                
+                // Insert before quick replies if it's an incoming message, or just append
+                const qrContainer = document.getElementById('quickReplies');
+                chatBody.insertBefore(msgDiv, qrContainer);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            };
+
+            const handleReply = (replyType) => {
+                appendMessage(replyType, 'out');
+                setTimeout(() => {
+                    let response = "";
+                    let isHtml = false;
+                    switch(replyType) {
+                        case "Hours?":
+                            response = "We are open Mon-Fri 10am-8pm, Sat 10am-7pm, and Sun 11am-5pm.";
+                            break;
+                        case "Location?":
+                            response = "We are located at 2862 NE 8th St, Homestead, FL 33033 in Oasis Plaza.";
+                            break;
+                        case "Services?":
+                            response = "We specialize in Waxing, Facials, and Massage Therapy. You can view our full menu on our website!";
+                            break;
+                        case "WhatsApp Us":
+                            response = `<a href="https://wa.me/3052421114" target="_blank" style="text-decoration: underline; color: #25D366; font-weight:bold;">💬 Chat with us on WhatsApp!</a>`;
+                            isHtml = true;
+                            break;
+                        case "Leave a Review":
+                            response = `<a href="https://www.google.com/maps/search/Wax%20Art%20Spa%202862%20NE%208th%20St%2C%20Homestead%2C%20FL%2033033%2C%20USA" target="_blank" style="text-decoration: underline; color: #3b82f6; font-weight:bold;">Click here to leave a Google Review!</a>`;
+                            isHtml = true;
+                            break;
+                        default:
+                            response = "Thanks for your message! Please call us at (305) 242-1114 for immediate assistance.";
+                    }
+                    appendMessage(response, 'in', isHtml);
+                }, 600);
+            };
+
+            quickReplies.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    handleReply(e.target.getAttribute('data-reply'));
+                    // Hide quick replies after first use
+                    document.getElementById('quickReplies').style.display = 'none';
+                });
+            });
+
+            const handleSend = () => {
+                const val = chatInput.value.trim();
+                if(val) {
+                    appendMessage(val, 'out');
+                    chatInput.value = '';
+                    setTimeout(() => {
+                        appendMessage("Thanks for reaching out! A spa concierge will reply shortly. For immediate booking, please use the Book Now button.", 'in');
+                    }, 1000);
+                }
+            };
+            chatSend.addEventListener('click', handleSend);
+            chatInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleSend(); });
+
+            // Promo Popup Logic
+            setTimeout(() => {
+                const popup = document.getElementById('promoPopup');
+                if(popup) {
+                    popup.style.display = 'flex';
+                }
+            }, 8000); // Show after 8 seconds
+
+            document.getElementById('promoClose').addEventListener('click', () => {
+                document.getElementById('promoPopup').style.display = 'none';
+            });
+
+            // CRITICAL: Global Modal Close Logic
+            document.body.addEventListener('click', e => { 
+                if(e.target.closest('.close-modal, .modal-close, .close, [aria-label="Close"]') || e.target.classList.contains('promo-popup')) { 
+                    const m = e.target.closest('.modal, .popup, #promoPopup, .fixed'); 
+                    if(m) m.style.display = 'none'; 
+                    else document.querySelectorAll('.modal, .popup, #promoPopup').forEach(p=>p.style.display='none'); 
+                } 
+            });
+
+        } catch(e) {
+            console.error("JS Error:", e);
+        }
+    </script>
+</body>
+</html>
